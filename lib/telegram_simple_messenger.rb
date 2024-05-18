@@ -25,8 +25,7 @@ module TelegramSimpleMessenger
   self.default_chat_id = nil
 
   def self.send_message(message, api_key = default_api_key, chat_id = default_chat_id)
-    raise Error, "No API key provided" unless api_key
-    raise Error, "No chat ID provided" unless chat_id
+    return "API key and chat ID are required" unless api_key && chat_id
 
     response = HTTParty.post("https://api.telegram.org/bot#{api_key}/sendMessage",
                              body: {

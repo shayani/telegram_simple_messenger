@@ -18,16 +18,16 @@ RSpec.describe TelegramSimpleMessenger do
   context "when the API KEY is missing" do
     let(:api_key) { nil }
 
-    it "raises an error if no API key is provided" do
-      expect { subject }.to raise_error(TelegramSimpleMessenger::Error, "No API key provided")
+    it "returns an error message" do
+      expect(service).to eq("API key and chat ID are required")
     end
   end
 
   context "when the CHAT ID is missing" do
     let(:chat_id) { nil }
 
-    it "raises an error if no chat ID is provided" do
-      expect { subject }.to raise_error(TelegramSimpleMessenger::Error, "No chat ID provided")
+    it "returns an error message" do
+      expect(service).to eq("API key and chat ID are required")
     end
   end
 end
