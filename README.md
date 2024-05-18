@@ -1,30 +1,59 @@
 # TelegramSimpleMessenger
 
-TODO: Delete this and the text below, and describe your gem
+It's a simple gem to send messages through Telegram to a user or a group/channel.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/telegram_simple_messenger`. To experiment with that code, run `bin/console` for an interactive prompt.
+## What do you need?
+
+To use it, you need and Telegram API KEY (a bot key) and a Chat ID.
+
+### API KEY
+The API KEY you can get building a new bot through [@BotFather](https://t.me/botfather). Just send a Telegram message to [@BotFather](https://t.me/botfather) and follows the instructions. An API KEY looks like this: `5490951233:AAFZH99VRQuIOH-qweL1fwATf3kna2eBQSE`.
+
+### CHAT ID
+Use another Telegram Bot [@RawDataBot](https://t.me/raw_data_bot) to find your own Chat ID or a group/channel Chat ID.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add to your `Gemfile`
 
-Install the gem and add to the application's Gemfile by executing:
+```ruby
+gem "telegram_simple_messenger", github: "shayani/telegram_simple_messenger"
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+Then run
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+```sh
+bundle install
+```
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+## Configuration
+
+Create a initializer file to set the default API KEY and CHAT ID
+
+```ruby
+# config/initializers/telegram_simple_messenger.rb
+
+TelegramSimpleMessenger.defautl_api_key=MY_API_KEY
+TelegramSimpleMessenger.default_chat_id=MY_CHAT_ID
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Sending a message using the default API KEY and CHAT ID
 
-## Development
+Simple call the service:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+TelegramSimpleMessenger.send_message("Hello world!")
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Overwriting the API KEY and/or CHAT ID
+
+You can overwrite the default API KEY and CHAT ID passing them as arguments:
+
+```ruby
+TelegramSimpleMessenger.send_message("Hello world!", ANOTHER_API_KEY, ANOTHER_CHAT_ID)
+```
 
 ## Contributing
 
