@@ -33,7 +33,7 @@ Create a initializer file to set the default API KEY and CHAT ID
 ```ruby
 # config/initializers/telegram_simple_messenger.rb
 
-TelegramSimpleMessenger.defautl_api_key=MY_API_KEY
+TelegramSimpleMessenger.default_api_key=MY_API_KEY
 TelegramSimpleMessenger.default_chat_id=MY_CHAT_ID
 ```
 
